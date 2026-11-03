@@ -53,9 +53,9 @@ Support the following actions
 
    ```bash
     com.follow.clash.action.START
-    
+
     com.follow.clash.action.STOP
-    
+
     com.follow.clash.action.TOGGLE
    ```
 
