@@ -1,3 +1,5 @@
+# Archived upstream Flutter workflow. Not an active Clash Next release workflow.
+# It requires upstream signing/distribution secrets and builds the legacy app.
 name: build
 
 on:

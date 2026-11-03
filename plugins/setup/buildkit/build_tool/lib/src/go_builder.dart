@@ -93,7 +93,10 @@ class GoBuilder {
   }
 
   Future<List<String>> buildAll(List<Target> targets) async {
-    final results = await Future.wait(targets.map(build));
+    final results = <String>[];
+    for (final target in targets) {
+      results.add(await build(target));
+    }
     return results;
   }
 

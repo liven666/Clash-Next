@@ -12,6 +12,7 @@ def androidArch = System.getenv('ANDROID_ARCH')
 def targetPlatform = project.findProperty('target-platform') ?:
         rootProject.findProperty('target-platform')
 def androidNdk = System.getenv('ANDROID_NDK')
+def skipGoCore = project.findProperty('skipGoCore')?.toString()?.toBoolean() ?: false
 def archArgs = androidArch
         ? ['--arch', androidArch]
         : (targetPlatform ? ['--target-platform', targetPlatform.toString()] : [])
@@ -29,6 +30,10 @@ def goCoreTask = buildGoCore
 
 // Wire into the Android build across all subprojects
 afterEvaluate {
+    if (skipGoCore) {
+        logger.lifecycle('[setup] Reusing existing Go core because -PskipGoCore=true')
+        return
+    }
     rootProject.subprojects { sub ->
         sub.tasks.matching {
             it.name.startsWith('configureCMake') ||

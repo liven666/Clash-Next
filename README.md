@@ -1,3 +1,52 @@
+# Clash Next — Android
+
+Clash Next is a personal-use Android client derived from
+[FlClash](https://github.com/chen08209/FlClash), using its full Mihomo core and
+Android service layer with a new native Kotlin interface.
+
+Current test release: **0.1.9-alpha10** · Android arm64 · **33.92 MiB**.
+
+- [Download the APK and view release notes](https://github.com/liven666/Clash-Next/releases/tag/android-0.1.9-alpha10)
+- [Android user guide (Chinese)](ANDROID_USER_SOP.md)
+- [Build the native Android version](CLASH_NEXT_BUILD.md)
+- [Version history and implementation status](V2_STATUS.md)
+
+## Implemented
+
+- Import Clash profiles from HTTPS links, YAML files, camera QR scans, or QR images.
+- Start/stop VPN, switch Rule/Global/Direct modes, and view live traffic and duration.
+- Browse and search nodes while disconnected, save a selection, and run latency tests while connected.
+- Home-screen widgets in 1x2, 1x4, 2x2, and 2x4 layouts, with node, flag, duration, and exit-IP information where space permits.
+- Bundled GeoIP, GeoSite, MMDB, and ASN data; no separate Geo download after installation.
+- Connection details and local rolling diagnostic logs with export and common-credential redaction.
+- A consistent native light/dark interface and a visible version number in Settings.
+- No analytics, crash uploads, Firebase, ML Kit, or advertising in the native APK.
+
+This is an **alpha**, signed with a development certificate. Android 15 emulator
+checks have passed; vivo X300 Pro launcher and background behavior still need
+physical-device verification. Subscription usage/expiry, a per-app routing
+editor, and complete backup/restore are not implemented yet. Windows, macOS,
+and iOS are not part of this release.
+
+The native app is `android/v2app`; `android/app` and `lib/` retain the earlier
+Flutter implementation. The APK does not embed that Flutter UI. Profiles and
+logs remain local; subscriptions/providers and exit-IP checks still make the
+network requests required by those features.
+
+## Source and license
+
+The fork starts at FlClash commit
+`7c831855efedceb1a72bd0b4c18da026593d0853`. The Mihomo submodule is pinned to
+`80362fc1895dcf60b79b562896653046e0687413`. Original history, notices, and
+[GPLv3 license](LICENSE) are preserved. This project is not an official FlClash
+release. Public uploads exclude subscription data, signing keys, local SDKs,
+emulator data, logs, and build caches.
+
+## Original FlClash README
+
+The upstream documentation below is retained for attribution and the legacy
+Flutter client. Its downloads and platform claims do not describe Clash Next.
+
 <div>
 
 [**简体中文**](README_zh_CN.md)

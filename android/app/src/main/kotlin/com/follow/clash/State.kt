@@ -36,6 +36,11 @@ object State {
     val tilePlugin: TilePlugin?
         get() = flutterEngine?.plugin<TilePlugin>()
 
+    fun updateRunState(runState: RunState) {
+        runStateFlow.tryEmit(runState)
+        ProxyWidgetProvider.updateAll(GlobalState.application, runState)
+    }
+
     suspend fun handleToggleAction() {
         var action: (suspend () -> Unit)?
         runLock.withLock {
@@ -57,9 +62,9 @@ object State {
                     true -> RunState.STOP
                     false -> RunState.START
                 }
-                runStateFlow.tryEmit(runState)
+                updateRunState(runState)
             } catch (_: Exception) {
-                runStateFlow.tryEmit(RunState.STOP)
+                updateRunState(RunState.STOP)
             }
         }
     }
@@ -157,12 +162,12 @@ object State {
                     return@launch
                 }
                 try {
-                    runStateFlow.tryEmit(RunState.PENDING)
+                    updateRunState(RunState.PENDING)
                     val options = sharedState.vpnOptions ?: return@launch
                     appPlugin?.let {
                         it.prepare(options.enable) {
                             runTime = Service.startService(options, runTime)
-                            runStateFlow.tryEmit(RunState.START)
+                            updateRunState(RunState.START)
                         }
                     } ?: run {
                         val intent = VpnService.prepare(GlobalState.application)
@@ -170,11 +175,11 @@ object State {
                             return@launch
                         }
                         runTime = Service.startService(options, runTime)
-                        runStateFlow.tryEmit(RunState.START)
+                        updateRunState(RunState.START)
                     }
                 } finally {
                     if (runStateFlow.value == RunState.PENDING) {
-                        runStateFlow.tryEmit(RunState.STOP)
+                        updateRunState(RunState.STOP)
                     }
                 }
             }
@@ -188,18 +193,17 @@ object State {
                     return@launch
                 }
                 try {
-                    runStateFlow.tryEmit(RunState.PENDING)
+                    updateRunState(RunState.PENDING)
                     runTime = Service.stopService()
-                    runStateFlow.tryEmit(RunState.STOP)
+                    updateRunState(RunState.STOP)
                 } finally {
                     if (runStateFlow.value == RunState.PENDING) {
-                        runStateFlow.tryEmit(RunState.START)
+                        updateRunState(RunState.START)
                     }
                 }
             }
         }
     }
 }
-
 
 

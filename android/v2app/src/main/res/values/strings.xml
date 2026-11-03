@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Clash Next</string>
+    <string name="tile_name">Clash 开关</string>
+    <string name="widget_description">显示节点、连接时长、出口 IP 与代理开关</string>
+    <string name="widget_status_on">已连接</string>
+    <string name="widget_status_off">未连接</string>
+    <string name="widget_status_pending">处理中</string>
+    <string name="widget_tap_to_toggle">轻触切换</string>
+    <string name="widget_content_description">%1$s，%2$s</string>
+</resources>

@@ -35,6 +35,19 @@ migrate_working_dir/
 /build/
 /dist/
 
+# Local Android UI verification device
+/.local-tools/clash-ui/
+
+# Local credentials and signing material
+.env
+.env.*
+!.env.example
+*.jks
+*.keystore
+*.p12
+*.pfx
+/android/local.properties
+
 # Symbolication related
 app.*.symbols
 

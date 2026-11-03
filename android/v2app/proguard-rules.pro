@@ -1,0 +1,5 @@
+-keep class com.follow.clash.service.** { *; }
+-keep class com.follow.clash.core.** { *; }
+-keep class com.follow.clash.** extends android.app.Activity { *; }
+-keep class com.follow.clash.** extends android.app.Service { *; }
+-keep class com.follow.clash.** extends android.content.BroadcastReceiver { *; }

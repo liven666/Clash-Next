@@ -1,0 +1,20 @@
+# Nonfunctional sample endpoints for local UI verification only.
+mixed-port: 7890
+mode: rule
+log-level: info
+proxies:
+  - {name: "香港 HK · 01", type: ss, server: 198.51.100.1, port: 443, cipher: aes-128-gcm, password: ui-test-only}
+  - {name: "香港 HK · 专线 02", type: ss, server: 198.51.100.2, port: 443, cipher: aes-128-gcm, password: ui-test-only}
+  - {name: "日本 JP · Tokyo · 低延迟专线 01", type: ss, server: 198.51.100.3, port: 443, cipher: aes-128-gcm, password: ui-test-only}
+  - {name: "新加坡 SG · 01", type: ss, server: 198.51.100.4, port: 443, cipher: aes-128-gcm, password: ui-test-only}
+  - {name: "美国 US · Los Angeles · Streaming 01", type: ss, server: 198.51.100.5, port: 443, cipher: aes-128-gcm, password: ui-test-only}
+  - {name: "德国 DE · Frankfurt · 01", type: ss, server: 198.51.100.6, port: 443, cipher: aes-128-gcm, password: ui-test-only}
+proxy-groups:
+  - name: 节点选择
+    type: select
+    proxies: ["香港 HK · 01", "香港 HK · 专线 02", "日本 JP · Tokyo · 低延迟专线 01", "新加坡 SG · 01", "美国 US · Los Angeles · Streaming 01", "德国 DE · Frankfurt · 01", DIRECT]
+  - name: 流媒体
+    type: select
+    proxies: ["美国 US · Los Angeles · Streaming 01", "日本 JP · Tokyo · 低延迟专线 01", "新加坡 SG · 01"]
+rules:
+  - MATCH,节点选择

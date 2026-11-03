@@ -20,6 +20,9 @@ class BroadcastReceiver : BroadcastReceiver() {
 
             BroadcastAction.SERVICE_DESTROYED.action -> {
                 GlobalState.log("Receiver service destroyed")
+                context?.let {
+                    ProxyWidgetProvider.updateAll(it, RunState.STOP)
+                }
                 GlobalState.launch {
                     State.handleStopServiceAction()
                 }

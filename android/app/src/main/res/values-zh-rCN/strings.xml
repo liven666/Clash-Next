@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FlClash Personal</string>
+    <string name="widget_description">从桌面开启或关闭 FlClash 代理</string>
+    <string name="widget_status_on">代理已开启</string>
+    <string name="widget_status_off">代理已关闭</string>
+    <string name="widget_status_pending">正在切换…</string>
+    <string name="widget_tap_to_toggle">点击切换</string>
+    <string name="widget_content_description">%1$s。%2$s</string>
+</resources>

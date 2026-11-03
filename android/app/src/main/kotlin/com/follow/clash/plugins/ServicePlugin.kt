@@ -101,7 +101,7 @@ class ServicePlugin : FlutterPlugin, MethodChannel.MethodCallHandler,
     }
 
     private fun onServiceDisconnected(message: String) {
-        State.runStateFlow.tryEmit(RunState.STOP)
+        State.updateRunState(RunState.STOP)
         flutterMethodChannel.invokeMethodOnMainThread<Any>("crash", message)
     }
 

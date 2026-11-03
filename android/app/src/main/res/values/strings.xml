@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FlClash Personal</string>
+    <string name="widget_description">Turn the FlClash proxy on or off from the home screen</string>
+    <string name="widget_status_on">Proxy on</string>
+    <string name="widget_status_off">Proxy off</string>
+    <string name="widget_status_pending">Switching…</string>
+    <string name="widget_tap_to_toggle">Tap to toggle</string>
+    <string name="widget_content_description">%1$s. %2$s</string>
+</resources>
